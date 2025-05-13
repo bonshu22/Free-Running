@@ -1,0 +1,188 @@
+/* GFF Fonts (Woff) */
+
+@font-face {
+    font-family: 'GFF Latin';
+    src: url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Thin.eot');
+    src: local('GFF Latin Thin'), local('GFF-Latin-Thin'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Thin.eot?#iefix') format('embedded-opentype'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Thin.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Thin.woff') format('woff'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GFF Latin';
+    src: url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Bold.eot');
+    src: local('GFF Latin Bold'), local('GFF-Latin-Bold'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Bold.eot?#iefix') format('embedded-opentype'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Bold.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Bold.woff') format('woff'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GFF Latin';
+    src: url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Regular.eot');
+    src: local('GFF Latin Regular'), local('GFF-Latin-Regular'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Regular.eot?#iefix') format('embedded-opentype'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Regular.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Regular.woff') format('woff'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GFF Latin';
+    src: url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Medium.eot');
+    src: local('GFF Latin Medium'), local('GFF-Latin-Medium'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Medium.eot?#iefix') format('embedded-opentype'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Medium.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Medium.woff') format('woff'),
+        url('https://raw.githubusercontent.com/starexxx/FFS/main/Fonts/GFF-Latin-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Global Styles */
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: skyblue;
+  font-family: 'GFF Latin', Arial, sans-serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#gameContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: skyblue;
+  touch-action: manipulation; 
+}
+
+#ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: green;
+  z-index: 1;
+}
+
+#kelly {
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+  height: 100px;
+  z-index: 10;
+  image-rendering: pixelated;
+}
+
+#kelly.jump {
+  animation: jump 0.6s ease;
+}
+
+#kelly.paused {
+  image-rendering: pixelated;
+  animation: none !important;
+  filter: grayscale(60%);
+}
+
+@keyframes jump {
+  0% { bottom: 100px; }
+  50% { bottom: 200px; }
+  100% { bottom: 100px; }
+}
+
+#obstacle {
+  position: absolute;
+  bottom: 95px;
+  right: -60px;
+  height: 80px;
+  animation: moveObstacle 2s linear infinite;
+  animation-play-state: paused;
+  z-index: 5;
+}
+
+@keyframes moveObstacle {
+  0% { right: -60px; }
+  100% { right: 100vw; }
+}
+
+#score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'GFF Latin', sans-serif;
+  text-shadow: 1px 1px #000;
+}
+
+#gameOver {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 30px;
+  border-radius: 0;
+  text-align: center;
+  z-index: 999;
+  font-family: 'GFF Latin', sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+
+#restartButton {
+  font-family: 'GFF Latin', sans-serif;
+  font-size: 15px;
+  padding: 20px 40px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: normal;
+  margin-top: 20px;
+  transition: ;
+}
+
+#restartButton:active {
+  filter: brightness(75%);
+}
+
+#rotateWarning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000e6;
+  color: white;
+  z-index: 9999;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 40vh;
+  font-family: 'GFF Latin', sans-serif;
+}
